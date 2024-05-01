@@ -50,7 +50,16 @@ class Game(arcade.Window):
         self.bg_l_ms = []
         self.game = 'start'
         self.exit = 'off'
-        self.check = ''
+        self.check = []
+        self.check_t = 0
+        self.count_l1 = 0
+        self.count_l2 = 0
+        self.count_l3 = 0
+        self.count_l4 = 0
+        self.count_l5 = 0
+        self.count_l6 = 0
+        self.count_l7 = 0
+        self.count_l8 = 0
         self.end = 'off'
         self.music = 'on'
 
@@ -271,6 +280,7 @@ class Game(arcade.Window):
                 self.selected_f_and_a_level_8.bottom = 1
 
     def on_key_press(self, symbol: int, modifiers: int):
+        global COLOR_COUNTER
         if symbol == arcade.key.ENTER and self.game == 'start':
             self.game = 'select_level'
             if self.current_bg_music != '':
@@ -288,7 +298,8 @@ class Game(arcade.Window):
         if symbol == arcade.key.Y and self.exit == 'on':
             self.game = 'select_level'
             self.exit = 'off'
-            self.check = ''
+            self.check = []
+            self.check_t = 0
             if self.current_bg_music != '':
                 self.current_bg_music.delete()
                 self.current_bg_music = ''
@@ -320,7 +331,8 @@ class Game(arcade.Window):
         if symbol == arcade.key.E and self.end == 'correctly':
             self.game = 'select_level'
             self.end = 'off'
-            self.check = ''
+            self.check = []
+            self.check_t = 0
             if self.current_bg_music != '':
                 self.current_bg_music.delete()
                 self.current_bg_music = ''
@@ -346,11 +358,13 @@ class Game(arcade.Window):
 
         if symbol == arcade.key.O and self.end == 'wrong':
             self.end = 'off'
+            self.check = []
             if self.music == 'on':
                 arcade.play_sound(self.clik)
 
         if symbol == arcade.key.KEY_1 and self.game == 'select_level':
             self.game = 'level_1'
+            COLOR_COUNTER = arcade.color.NEW_CAR
             if self.current_bg_music != '':
                 self.current_bg_music.delete()
                 self.current_bg_music = ''
@@ -392,6 +406,7 @@ class Game(arcade.Window):
 
         if symbol == arcade.key.KEY_2 and self.game == 'select_level':
             self.game = 'level_2'
+            COLOR_COUNTER = arcade.color.NEW_CAR
             if self.current_bg_music != '':
                 self.current_bg_music.delete()
                 self.current_bg_music = ''
@@ -431,6 +446,7 @@ class Game(arcade.Window):
 
         if symbol == arcade.key.KEY_3 and self.game == 'select_level':
             self.game = 'level_3'
+            COLOR_COUNTER = arcade.color.NEW_CAR
             if self.current_bg_music != '':
                 self.current_bg_music.delete()
                 self.current_bg_music = ''
@@ -468,6 +484,7 @@ class Game(arcade.Window):
 
         if symbol == arcade.key.KEY_4 and self.game == 'select_level':
             self.game = 'level_4'
+            COLOR_COUNTER = arcade.color.NEW_CAR
             if self.current_bg_music != '':
                 self.current_bg_music.delete()
                 self.current_bg_music = ''
@@ -503,6 +520,7 @@ class Game(arcade.Window):
 
         if symbol == arcade.key.KEY_5 and self.game == 'select_level':
             self.game = 'level_5'
+            COLOR_COUNTER = arcade.color.NEW_CAR
             if self.current_bg_music != '':
                 self.current_bg_music.delete()
                 self.current_bg_music = ''
@@ -538,6 +556,7 @@ class Game(arcade.Window):
 
         if symbol == arcade.key.KEY_6 and self.game == 'select_level':
             self.game = 'level_6'
+            COLOR_COUNTER = arcade.color.NEW_CAR
             if self.current_bg_music != '':
                 self.current_bg_music.delete()
                 self.current_bg_music = ''
@@ -573,6 +592,7 @@ class Game(arcade.Window):
 
         if symbol == arcade.key.KEY_7 and self.game == 'select_level':
             self.game = 'level_7'
+            COLOR_COUNTER = arcade.color.NEW_CAR
             if self.current_bg_music != '':
                 self.current_bg_music.delete()
                 self.current_bg_music = ''
@@ -595,16 +615,12 @@ class Game(arcade.Window):
             self.formulas_coords_level_7 = [
                 [715, 260],
                 [715, 170],
-                [715, 85],
                 [540, 260],
                 [540, 170],
-                [540, 85],
                 [305, 260],
                 [305, 170],
-                [305, 85],
                 [80, 260],
                 [80, 170],
-                [80, 85],
             ]
             self.formulas_coords_l7_textures_name = os.listdir(TASKS_F_AND_A_LEVEL_7_COSTUMES_PATH)
 
@@ -619,6 +635,7 @@ class Game(arcade.Window):
 
         if symbol == arcade.key.KEY_8 and self.game == 'select_level':
             self.game = 'level_8'
+            COLOR_COUNTER = arcade.color.NEW_CAR
             if self.current_bg_music != '':
                 self.current_bg_music.delete()
                 self.current_bg_music = ''
@@ -639,18 +656,18 @@ class Game(arcade.Window):
             )
 
             self.formulas_coords_level_8 = [
-                [715, 260],
-                [715, 170],
-                [715, 85],
-                [540, 260],
-                [540, 170],
-                [540, 85],
-                [305, 260],
-                [305, 170],
-                [305, 85],
-                [80, 260],
-                [80, 170],
-                [80, 85],
+                [715, 280],
+                [715, 190],
+                [715, 105],
+                [540, 280],
+                [540, 190],
+                [540, 105],
+                [305, 280],
+                [305, 190],
+                [305, 105],
+                [80, 280],
+                [80, 190],
+                [80, 105],
             ]
             self.formulas_coords_l8_textures_name = os.listdir(TASKS_F_AND_A_LEVEL_8_COSTUMES_PATH)
 
@@ -664,220 +681,234 @@ class Game(arcade.Window):
             )
 
         if symbol == arcade.key.C and self.game == 'level_1':
+            self.count_l1 += 1
             for i, answer in enumerate(self.sprite_list_answers_l1):
                 if '00' in answer.texture.name:
                     for formula in self.sprite_list_formuls_l1:
                         if (
                                 '00' in formula.texture.name and answer.center_y - 40 <= formula.center_y <= answer.center_y + 40
                                 and answer.center_x - 40 <= formula.center_x <= answer.center_x + 40):
-                            self.check += 'l1_c'
+                            self.check.append('l1_c')
                 if '01' in answer.texture.name:
                     for formula in self.sprite_list_formuls_l1:
                         if (
                                 '01' in formula.texture.name and answer.center_y - 40 <= formula.center_y <= answer.center_y + 40
                                 and answer.center_x - 40 <= formula.center_x <= answer.center_x + 40):
-                            self.check += 'l2_c'
+                            self.check.append('l2_c')
                 if '02' in answer.texture.name:
                     for formula in self.sprite_list_formuls_l1:
                         if (
                                 '02' in formula.texture.name and answer.center_y - 40 <= formula.center_y <= answer.center_y + 40
                                 and answer.center_x - 40 <= formula.center_x <= answer.center_x + 40):
-                            self.check += 'l3_c'
+                            self.check.append('l3_c')
                 if '03' in answer.texture.name:
                     for formula in self.sprite_list_formuls_l1:
                         if (
                                 '03' in formula.texture.name and answer.center_y - 40 <= formula.center_y <= answer.center_y + 40
                                 and answer.center_x - 40 <= formula.center_x <= answer.center_x + 40):
-                            self.check += 'l4_c'
+                            self.check.append('l4_c')
                 if '04' in answer.texture.name:
                     for formula in self.sprite_list_formuls_l1:
                         if (
                                 '04' in formula.texture.name and answer.center_y - 40 <= formula.center_y <= answer.center_y + 40
                                 and answer.center_x - 40 <= formula.center_x <= answer.center_x + 40):
-                            self.check += 'l5_c'
+                            self.check.append('l5_c')
                 if '05' in answer.texture.name:
                     for formula in self.sprite_list_formuls_l1:
                         if (
                                 '05' in formula.texture.name and answer.center_y - 40 <= formula.center_y <= answer.center_y + 40
                                 and answer.center_x - 40 <= formula.center_x <= answer.center_x + 40):
-                            self.check += 'l6_c'
-                if ('l1_c' in self.check and 'l2_c' in self.check and 'l3_c' in self.check and 'l4_c' in self.check
-                        and 'l5_c' in self.check and 'l6_c' in self.check):
-                    self.end = 'correctly'
+                            self.check.append('l6_c')
+                if (
+                        'l1_c' in self.check and 'l2_c' in self.check and 'l3_c' in self.check and 'l4_c' in self.check and 'l5_c' in self.check and 'l6_c' in self.check):
                     if self.music == 'on':
                         arcade.play_sound(self.win)
+                    self.end = 'correctly'
                 else:
-                    self.end = 'wrong'
                     if self.music == 'on':
                         arcade.play_sound(self.lose)
+                    self.end = 'wrong'
 
         if symbol == arcade.key.C and self.game == 'level_2':
-            print(self.check)
+            self.count_l2 += 1
             for i, answer in enumerate(self.sprite_list_answers_l2):
                 if '00' in answer.texture.name:
                     for formula in self.sprite_list_formuls_l2:
                         if (
                                 '00' in formula.texture.name and answer.center_y - 40 <= formula.center_y <= answer.center_y + 40
                                 and answer.center_x - 40 <= formula.center_x <= answer.center_x + 40):
-                            self.check += 'l1_c'
+                            self.check.append('l1_c')
                 if '01' in answer.texture.name:
                     for formula in self.sprite_list_formuls_l2:
                         if (
                                 '01' in formula.texture.name and answer.center_y - 40 <= formula.center_y <= answer.center_y + 40
                                 and answer.center_x - 40 <= formula.center_x <= answer.center_x + 40):
-                            self.check += 'l2_c'
+                            self.check.append('l2_c')
                 if '02' in answer.texture.name:
                     for formula in self.sprite_list_formuls_l2:
                         if (
                                 '02' in formula.texture.name and answer.center_y - 40 <= formula.center_y <= answer.center_y + 40
                                 and answer.center_x - 40 <= formula.center_x <= answer.center_x + 40):
-                            self.check += 'l3_c'
+                            self.check.append('l3_c')
                 if '03' in answer.texture.name:
                     for formula in self.sprite_list_formuls_l2:
                         if (
                                 '03' in formula.texture.name and answer.center_y - 40 <= formula.center_y <= answer.center_y + 40
                                 and answer.center_x - 40 <= formula.center_x <= answer.center_x + 40):
-                            self.check += 'l4_c'
+                            self.check.append('l4_c')
                 if '04' in answer.texture.name:
                     for formula in self.sprite_list_formuls_l2:
                         if (
                                 '04' in formula.texture.name and answer.center_y - 40 <= formula.center_y <= answer.center_y + 40
                                 and answer.center_x - 40 <= formula.center_x <= answer.center_x + 40):
-                            self.check += 'l5_c'
+                            self.check.append('l5_c')
                 if '05' in answer.texture.name:
                     for formula in self.sprite_list_formuls_l2:
                         if (
                                 '05' in formula.texture.name and answer.center_y - 40 <= formula.center_y <= answer.center_y + 40
                                 and answer.center_x - 40 <= formula.center_x <= answer.center_x + 40):
-                            self.check += 'l6_c'
+                            self.check.append('l6_c')
                 if ('l1_c' in self.check and 'l2_c' in self.check and 'l3_c' in self.check and 'l4_c' in self.check
                         and 'l5_c' in self.check and 'l6_c' in self.check):
-                    self.end = 'correctly'
                     if self.music == 'on':
                         arcade.play_sound(self.win)
+                    self.end = 'correctly'
+
                 else:
-                    self.end = 'wrong'
                     if self.music == 'on':
                         arcade.play_sound(self.lose)
+                    self.end = 'wrong'
 
         if symbol == arcade.key.C and self.game == 'level_3':
+            self.count_l3 += 1
             for i, illustration in enumerate(self.sprite_list_illustration_l3):
                 if '00' in illustration.texture.name:
                     for answer in self.sprite_list_answers_l3:
                         if ('00' in answer.texture.name and illustration.bottom - 40 <= answer.top):
-                            self.check += 'l1_c'
+                            self.check.append('l1_c')
                 if '01' in illustration.texture.name:
                     for answer in self.sprite_list_answers_l3:
                         if (
                                 '01' in answer.texture.name and illustration.bottom - 40 <= answer.top):
-                            self.check += 'l2_c'
+                            self.check.append('l2_c')
                 if '02' in illustration.texture.name:
                     for answer in self.sprite_list_answers_l3:
                         if (
                                 '02' in answer.texture.name and illustration.bottom - 40 <= answer.top):
-                            self.check += 'l3_c'
+                            self.check.append('l3_c')
                 if '03' in illustration.texture.name:
                     for answer in self.sprite_list_answers_l3:
                         if (
                                 '03' in answer.texture.name and illustration.bottom - 40 <= answer.top):
-                            self.check += 'l4_c'
+                            self.check.append('l4_c')
                 if 'l1_c' in self.check and 'l2_c' in self.check and 'l3_c' in self.check and 'l4_c':
-                    self.end = 'correctly'
                     if self.music == 'on':
                         arcade.play_sound(self.win)
+                    self.end = 'correctly'
+
                 else:
-                    self.end = 'wrong'
                     if self.music == 'on':
                         arcade.play_sound(self.lose)
+                    self.end = 'wrong'
 
         if symbol == arcade.key.C and self.game == 'level_4':
+            self.count_l4 += 1
             for i, f_and_a in enumerate(self.sprite_list_f_and_a_l4):
                 if '00' in f_and_a.texture.name and 110 <= f_and_a.center_x <= 190 and 160 <= f_and_a.center_y <= 240:
-                    self.check += 'l1_c'
+                    self.check.append('l1_c')
             for f_and_a in self.sprite_list_f_and_a_l4:
                 if '03' in f_and_a.texture.name and 685 <= f_and_a.center_x <= 765 and 160 <= f_and_a.center_y <= 240:
-                    self.check += 'l2_c'
+                    self.check.append('l2_c')
                 if 'l1_c' in self.check and 'l2_c' in self.check:
-                    self.end = 'correctly'
                     if self.music == 'on':
                         arcade.play_sound(self.win)
+                    self.end = 'correctly'
+
                 else:
-                    self.end = 'wrong'
                     if self.music == 'on':
                         arcade.play_sound(self.lose)
+                    self.end = 'wrong'
 
         if symbol == arcade.key.C and self.game == 'level_5':
+            self.count_l5 += 1
             for i, f_and_a in enumerate(self.sprite_list_f_and_a_l5):
                 if '00' in f_and_a.texture.name and 110 <= f_and_a.center_x <= 190 and 160 <= f_and_a.center_y <= 240:
-                    self.check += 'l1_c'
+                    self.check.append('l1_c')
             for f_and_a in self.sprite_list_f_and_a_l5:
                 if '05' in f_and_a.texture.name and 620 <= f_and_a.center_x <= 700 and 160 <= f_and_a.center_y <= 240:
-                    self.check += 'l2_c'
+                    self.check.append('l2_c')
                 if 'l1_c' in self.check and 'l2_c' in self.check:
-                    self.end = 'correctly'
                     if self.music == 'on':
                         arcade.play_sound(self.win)
+                    self.end = 'correctly'
+
                 else:
-                    self.end = 'wrong'
                     if self.music == 'on':
                         arcade.play_sound(self.lose)
+                    self.end = 'wrong'
 
         if symbol == arcade.key.C and self.game == 'level_6':
+            self.count_l6 += 1
             for i, f_and_a in enumerate(self.sprite_list_f_and_a_l6):
                 if '00' in f_and_a.texture.name and 145 <= f_and_a.center_x <= 225 and 160 <= f_and_a.center_y <= 240:
-                    self.check += 'l1_c'
+                    self.check.append('l1_c')
             for f_and_a in self.sprite_list_f_and_a_l6:
                 if '01' in f_and_a.texture.name and 660 <= f_and_a.center_x <= 740 and 160 <= f_and_a.center_y <= 240:
-                    self.check += 'l2_c'
+                    self.check.append('l2_c')
                 if 'l1_c' in self.check and 'l2_c' in self.check:
-                    self.end = 'correctly'
                     if self.music == 'on':
                         arcade.play_sound(self.win)
+                    self.end = 'correctly'
+
                 else:
-                    self.end = 'wrong'
                     if self.music == 'on':
                         arcade.play_sound(self.lose)
+                    self.end = 'wrong'
 
         if symbol == arcade.key.C and self.game == 'level_7':
+            self.count_l7 += 1
             for i, f_and_a in enumerate(self.sprite_list_f_and_a_l7):
                 if '11' in f_and_a.texture.name and 700 <= f_and_a.center_x <= 730 and 385 <= f_and_a.center_y <= 415:
-                    self.check += 'a_c'
+                    self.check.append('a_c')
             for f_and_a in self.sprite_list_f_and_a_l7:
                 if '07' in f_and_a.texture.name and 70 <= f_and_a.center_x <= 100 and 385 <= f_and_a.center_y <= 415:
-                    self.check += 'f1_c'
+                    self.check.append('f1_c')
             for f_and_a in self.sprite_list_f_and_a_l7:
                 if '06' in f_and_a.texture.name and 285 <= f_and_a.center_x <= 315 and 385 <= f_and_a.center_y <= 415:
-                    self.check += 'f2_c'
+                    self.check.append('f2_c')
             for f_and_a in self.sprite_list_f_and_a_l7:
                 if '08' in f_and_a.texture.name and 500 <= f_and_a.center_x <= 530 and 385 <= f_and_a.center_y <= 415:
-                    self.check += 'f3_c'
+                    self.check.append('f3_c')
             if 'a_c' in self.check and 'f1_c' in self.check and 'f2_c' in self.check and 'f3_c' in self.check:
-                self.end = 'correctly'
                 if self.music == 'on':
                     arcade.play_sound(self.win)
+                self.end = 'correctly'
+
             else:
-                self.end = 'wrong'
                 if self.music == 'on':
                     arcade.play_sound(self.lose)
+                self.end = 'wrong'
 
         if symbol == arcade.key.C and self.game == 'level_8':
+            self.count_l8 += 1
             for i, f_and_a in enumerate(self.sprite_list_f_and_a_l8):
                 if '11' in f_and_a.texture.name and 700 <= f_and_a.center_x <= 730 and 385 <= f_and_a.center_y <= 415:
-                    self.check += 'a_c'
+                    self.check.append('a_c')
             for f_and_a in self.sprite_list_f_and_a_l8:
                 if '03' in f_and_a.texture.name and 70 <= f_and_a.center_x <= 100 and 385 <= f_and_a.center_y <= 415:
-                    self.check += 'f1_c'
+                    self.check.append('f1_c')
             for f_and_a in self.sprite_list_f_and_a_l8:
                 if '08' in f_and_a.texture.name and 385 <= f_and_a.center_x <= 415 and 385 <= f_and_a.center_y <= 415:
-                    self.check += 'f2_c'
+                    self.check.append('f2_c')
             if 'a_c' in self.check and 'f1_c' in self.check and 'f2_c' in self.check:
-                self.end = 'correctly'
                 if self.music == 'on':
                     arcade.play_sound(self.win)
+                self.end = 'correctly'
+
             else:
-                self.end = 'wrong'
                 if self.music == 'on':
                     arcade.play_sound(self.lose)
+                self.end = 'wrong'
 
         if symbol == arcade.key.D and self.music == 'on':
             self.music = 'off'
@@ -894,6 +925,14 @@ class Game(arcade.Window):
         if self.game == 'select_level':
             arcade.draw_texture_rectangle(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT,
                                           self.select_img)
+            arcade.draw_text(f'Количество попыток: {self.count_l1}', 28, 536, arcade.color.PRUSSIAN_BLUE, 8.24)
+            arcade.draw_text(f'Количество попыток: {self.count_l2}', 309, 530, arcade.color.PRUSSIAN_BLUE, 8.24)
+            arcade.draw_text(f'Количество попыток: {self.count_l3}', 590, 530, arcade.color.PRUSSIAN_BLUE, 8.24)
+            arcade.draw_text(f'Количество попыток: {self.count_l4}', 28, 325, arcade.color.PRUSSIAN_BLUE, 8.24)
+            arcade.draw_text(f'Количество попыток: {self.count_l5}', 309, 325, arcade.color.PRUSSIAN_BLUE, 8.24)
+            arcade.draw_text(f'Количество попыток: {self.count_l6}', 590, 325, arcade.color.PRUSSIAN_BLUE, 8.24)
+            arcade.draw_text(f'Количество попыток: {self.count_l7}', 28, 140, arcade.color.PRUSSIAN_BLUE, 8.24)
+            arcade.draw_text(f'Количество попыток: {self.count_l8}', 590, 140, arcade.color.PRUSSIAN_BLUE, 8.24)
             arcade.draw_text('V', SCREEN_WIDTH - 445, SCREEN_HEIGHT - 565,
                              arcade.color.BABY_BLUE, 30)
         if self.game == 'level_1':
@@ -902,6 +941,9 @@ class Game(arcade.Window):
             arcade.draw_text(' Соедини формулы с правильным названием', SCREEN_WIDTH - 650, SCREEN_HEIGHT - 50,
                              arcade.color.DARK_BLUE, 20)
             arcade.draw_text('Чтобы проверить ответ нажмите "C"', 150, 40, arcade.color.WHITE, 20)
+            arcade.draw_text(f'Количество правильных ответов: {self.check_t}/6', SCREEN_WIDTH - 650,
+                             SCREEN_HEIGHT - 635,
+                             COLOR_COUNTER, 20)
             self.sprite_list_answers_l1.draw()
             self.sprite_list_formuls_l1.draw()
 
@@ -911,6 +953,9 @@ class Game(arcade.Window):
             arcade.draw_text('Соедини две части формулы', 230, 600,
                              arcade.color.WHITE, 20)
             arcade.draw_text('Чтобы проверить ответ нажмите "C"', 150, 40, arcade.color.WHITE, 20)
+            arcade.draw_text(f'Количество правильных ответов: {self.check_t}/6', SCREEN_WIDTH - 650,
+                             SCREEN_HEIGHT - 635,
+                             COLOR_COUNTER, 20)
             self.sprite_list_answers_l2.draw()
             self.sprite_list_formuls_l2.draw()
 
@@ -920,18 +965,24 @@ class Game(arcade.Window):
             arcade.draw_text('Соедините физическую величину и рисунок', SCREEN_WIDTH - 700, SCREEN_HEIGHT - 50,
                              arcade.color.WHITE, 20)
             arcade.draw_text('Чтобы проверить ответ нажмите "C"', 150, 40, arcade.color.WHITE, 20)
+            arcade.draw_text(f'Количество правильных ответов: {self.check_t}/4', SCREEN_WIDTH - 650,
+                             SCREEN_HEIGHT - 635,
+                             COLOR_COUNTER, 20)
             self.sprite_list_illustration_l3.draw()
             self.sprite_list_answers_l3.draw()
 
         if self.game == 'level_4':
             arcade.draw_texture_rectangle(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT,
                                           self.bg_l_imgs[4])
-            arcade.draw_text('Решите задачи', 300, 600,
+            arcade.draw_text('Решите задачи', 300, 620,
                              arcade.color.WHITE, 20)
-            arcade.draw_text('Чтобы проверить ответ нажмите "C"', 150, 20, arcade.color.WHITE, 20)
-            arcade.draw_texture_rectangle(305, 310, 10, 520,
+            arcade.draw_text('Чтобы проверить ответ нажмите "C"', 150, 50, arcade.color.WHITE, 20)
+            arcade.draw_text(f'Количество правильных ответов: {self.check_t}/2', SCREEN_WIDTH - 650,
+                             SCREEN_HEIGHT - 635,
+                             COLOR_COUNTER, 20)
+            arcade.draw_texture_rectangle(305, 350, 10, 520,
                                           self.wall)
-            arcade.draw_texture_rectangle(570, 310, 10, 520,
+            arcade.draw_texture_rectangle(570, 350, 10, 520,
                                           self.wall)
             arcade.draw_texture_rectangle(225, 390, 150, 150,
                                           self.graph_level_4)
@@ -945,12 +996,15 @@ class Game(arcade.Window):
         if self.game == 'level_5':
             arcade.draw_texture_rectangle(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT,
                                           self.bg_l_imgs[5])
-            arcade.draw_text('Решите задачи', 300, 600,
+            arcade.draw_text('Решите задачи', 300, 620,
                              arcade.color.WHITE, 20)
-            arcade.draw_text('Чтобы проверить ответ нажмите "C"', 150, 20, arcade.color.WHITE, 20)
-            arcade.draw_texture_rectangle(305, 310, 10, 520,
+            arcade.draw_text('Чтобы проверить ответ нажмите "C"', 150, 50, arcade.color.WHITE, 20)
+            arcade.draw_text(f'Количество правильных ответов: {self.check_t}/2', SCREEN_WIDTH - 650,
+                             SCREEN_HEIGHT - 635,
+                             COLOR_COUNTER, 20)
+            arcade.draw_texture_rectangle(305, 350, 10, 520,
                                           self.wall)
-            arcade.draw_texture_rectangle(510, 310, 10, 520,
+            arcade.draw_texture_rectangle(510, 350, 10, 520,
                                           self.wall)
             arcade.draw_texture_rectangle(130, 200, 300, 150,
                                           self.box_answer)
@@ -962,12 +1016,15 @@ class Game(arcade.Window):
         if self.game == 'level_6':
             arcade.draw_texture_rectangle(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT,
                                           self.bg_l_imgs[6])
-            arcade.draw_text('Решите задачи', 300, 600,
+            arcade.draw_text('Решите задачи', 300, 620,
                              arcade.color.WHITE, 20)
-            arcade.draw_text('Чтобы проверить ответ нажмите "C"', 150, 20, arcade.color.WHITE, 20)
-            arcade.draw_texture_rectangle(340, 310, 10, 520,
+            arcade.draw_text('Чтобы проверить ответ нажмите "C"', 150, 50, arcade.color.WHITE, 20)
+            arcade.draw_text(f'Количество правильных ответов: {self.check_t}/2', SCREEN_WIDTH - 650,
+                             SCREEN_HEIGHT - 635,
+                             COLOR_COUNTER, 20)
+            arcade.draw_texture_rectangle(340, 350, 10, 520,
                                           self.wall)
-            arcade.draw_texture_rectangle(545, 310, 10, 520,
+            arcade.draw_texture_rectangle(545, 350, 10, 520,
                                           self.wall)
             arcade.draw_texture_rectangle(185, 200, 300, 150,
                                           self.box_answer)
@@ -981,7 +1038,10 @@ class Game(arcade.Window):
                                           self.bg_l_imgs[7])
             arcade.draw_text('Решите задачу', 300, 600,
                              arcade.color.WHITE, 20)
-            arcade.draw_text('Чтобы проверить ответ нажмите "C"', 150, 20, arcade.color.WHITE, 20)
+            arcade.draw_text('Чтобы проверить ответ нажмите "C"', 130, 50, arcade.color.WHITE, 20)
+            arcade.draw_text(f'Количество правильных ответов: {self.check_t}/4', SCREEN_WIDTH - 650,
+                             SCREEN_HEIGHT - 635,
+                             COLOR_COUNTER, 20)
             arcade.draw_texture_rectangle(85, 400, 150, 100,
                                           self.box_formula)
             arcade.draw_texture_rectangle(300, 400, 150, 100,
@@ -998,16 +1058,19 @@ class Game(arcade.Window):
         if self.game == 'level_8':
             arcade.draw_texture_rectangle(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT,
                                           self.bg_l_imgs[7])
-            arcade.draw_text('Решите задачу', 300, 600,
+            arcade.draw_text('Решите задачу', 300, 620,
                              arcade.color.WHITE, 20)
-            arcade.draw_text('Чтобы проверить ответ нажмите "C"', 150, 20, arcade.color.WHITE, 20)
-            arcade.draw_texture_rectangle(85, 400, 150, 100,
+            arcade.draw_text('Чтобы проверить ответ нажмите "C"', 150, 50, arcade.color.WHITE, 20)
+            arcade.draw_text(f'Количество правильных ответов: {self.check_t}/3', SCREEN_WIDTH - 650,
+                             SCREEN_HEIGHT - 635,
+                             COLOR_COUNTER, 20)
+            arcade.draw_texture_rectangle(85, 420, 150, 100,
                                           self.box_formula)
-            arcade.draw_texture_rectangle(400, 400, 150, 100,
+            arcade.draw_texture_rectangle(400, 420, 150, 100,
                                           self.box_formula)
-            arcade.draw_texture_rectangle(715, 400, 150, 100,
+            arcade.draw_texture_rectangle(715, 420, 150, 100,
                                           self.box_answer)
-            arcade.draw_texture_rectangle(0, 310, 10, 2000,
+            arcade.draw_texture_rectangle(0, 340, 10, 2000,
                                           self.wall, 90)
             self.sprite_list_conditions_l8.draw()
             self.sprite_list_f_and_a_l8.draw()
@@ -1015,17 +1078,55 @@ class Game(arcade.Window):
         if self.exit == 'on':
             arcade.draw_texture_rectangle(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 400, 150, self.exit_img)
 
-        if self.exit == 'guide_form':
-            self.game = 'select_level'
-            self.exit = 'off'
-
         if self.end == 'wrong' and self.game != 'select_level' and self.game != 'start':
             arcade.draw_texture_rectangle(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 400, 150, self.wrong)
         if self.end == 'correctly' and self.game != 'select_level' and self.game != 'start':
             arcade.draw_texture_rectangle(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 400, 150, self.correctly)
 
     def update(self, delta_time: float):
-        pass
+        global COLOR_COUNTER
+        if (self.game == 'level_1' or self.game == 'level_2') and (self.end == 'wrong' or self.end == 'correctly'):
+            self.check_t = len(self.check)
+            if self.check_t == 0:
+                COLOR_COUNTER = arcade.color.NEW_CAR
+            elif self.check_t == 1 or self.check_t == 2:
+                COLOR_COUNTER = arcade.color.BURGUNDY
+            elif self.check_t == 3 or self.check_t == 4 or self.check_t == 5:
+                COLOR_COUNTER = arcade.color.OCHRE
+            else:
+                COLOR_COUNTER = arcade.color.EMERALD
+
+        if (self.game == 'level_3' or self.game == 'level_7') and (self.end == 'wrong' or self.end == 'correctly'):
+            self.check_t = len(self.check)
+            if self.check_t == 0:
+                COLOR_COUNTER = arcade.color.NEW_CAR
+            elif self.check_t == 1:
+                COLOR_COUNTER = arcade.color.BURGUNDY
+            elif self.check_t == 3 or self.check_t == 2:
+                COLOR_COUNTER = arcade.color.OCHRE
+            else:
+                COLOR_COUNTER = arcade.color.EMERALD
+
+        if self.game == 'level_8' and (self.end == 'wrong' or self.end == 'correctly'):
+            self.check_t = len(self.check)
+            if self.check_t == 0:
+                COLOR_COUNTER = arcade.color.NEW_CAR
+            elif self.check_t == 1:
+                COLOR_COUNTER = arcade.color.BURGUNDY
+            elif self.check_t == 3:
+                COLOR_COUNTER = arcade.color.OCHRE
+            else:
+                COLOR_COUNTER = arcade.color.EMERALD
+
+        if (self.game == 'level_4' or self.game == 'level_5' or self.game == 'level_6') and (
+                self.end == 'wrong' or self.end == 'correctly'):
+            self.check_t = len(self.check)
+            if self.check_t == 0:
+                COLOR_COUNTER = arcade.color.NEW_CAR
+            elif self.check_t == 1:
+                COLOR_COUNTER = arcade.color.OCHRE
+            else:
+                COLOR_COUNTER = arcade.color.EMERALD
 
     def setup(self):
 
